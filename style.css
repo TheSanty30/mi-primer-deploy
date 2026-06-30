@@ -1,0 +1,203 @@
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --accent-color: #111111;
+    --secondary-text: #6c757d;
+    --nav-height: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+    height: var(--nav-height);
+    background-color: rgba(248, 249, 250, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--secondary-text);
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: var(--nav-height) 10% 0;
+    gap: 4rem;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 550px;
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2.5px;
+}
+
+p {
+    font-size: 1.25rem;
+    color: var(--secondary-text);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1.1rem 2.8rem;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 400;
+    font-size: 1rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+/* Visual / Abstract shape */
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.abstract-shape {
+    width: 450px;
+    height: 450px;
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: morph 10s ease-in-out infinite;
+    box-shadow: 
+        inset 20px 20px 60px rgba(255,255,255,0.8), 
+        inset -20px -20px 60px rgba(0,0,0,0.05),
+        20px 20px 60px rgba(0,0,0,0.03);
+}
+
+/* Animations */
+@keyframes morph {
+    0% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+    34% {
+        border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+    }
+    67% {
+        border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    }
+    100% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+        padding-top: calc(var(--nav-height) + 3rem);
+        padding-bottom: 3rem;
+    }
+    
+    .hero-content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+    
+    .abstract-shape {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    .abstract-shape {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .nav-links {
+        display: none; /* simple mobile hide for minimal look */
+    }
+}
